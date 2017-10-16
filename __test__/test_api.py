@@ -13,4 +13,4 @@ for posts in api.fb_fetch_posts('jtbcnews', '2017-08-01', '2017-10-12'):
 
 
 # api.fb_fetch_posts('jtbcnews', '2017-08-01', '2017-10-12')
-api.fb_fetch_posts('chosun', '2017-01-01', '2017-10-12')
+# api.fb_fetch_posts('chosun', '2017-01-01', '2017-10-12')
