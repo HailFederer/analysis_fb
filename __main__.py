@@ -9,13 +9,13 @@ import visualize
 
 if __name__ == '__main__':
     items = [
-        {'pagename':'jtbcnews', 'since':'2017-10-15', 'until':'2017-10-16'},
-        {'pagename':'chosun', 'since':'2017-10-15', 'until':'2017-10-16'}
+        {'pagename':'jtbcnews', 'since':'2017-01-01', 'until':'2017-10-17'},
+        {'pagename':'chosun', 'since':'2017-01-01', 'until':'2017-10-17'}
     ]
 
     #  collection
     for item in items:
-        resultfile = collection.crawling(**item)
+        resultfile = collection.crawling(**item, fetch=True)
         item['resultfile'] = resultfile
 
     # analysis
@@ -27,7 +27,10 @@ if __name__ == '__main__':
     for item in items:
         count = item['count']
         count_t50 = dict(count.most_common(50))
-        filename = '%s_%s_%s.png' % (item['pagename'], item['since'], item['until'])
+        filename = '%s_%s_%s' % (item['pagename'], item['since'], item['until'])
+
+        visualize.wordcloud(count_t50, filename)
+
         visualize.graph_bar(
             values = list(count_t50.values()),
             ticks = list(count_t50.keys()),
